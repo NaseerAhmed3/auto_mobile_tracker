@@ -3,8 +3,6 @@ import 'package:auto_mobile_tracker/siginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'main.dart';
-
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class Signup extends StatefulWidget {
@@ -24,7 +22,6 @@ class _SignupState extends State<Signup> {
     super.dispose();
   }
 
-  @override
   bool value = false;
   Widget build(BuildContext context) {
     return Scaffold(
