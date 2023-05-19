@@ -84,12 +84,14 @@ class RoundedInputField extends StatelessWidget {
 class Consttext extends StatelessWidget {
   final kfontw;
   final kfonts;
+  final kcolor;
   final String ctext;
   const Consttext({
     super.key,
     required this.ctext,
     required this.kfontw,
     required this.kfonts,
+    required this.kcolor,
   });
 
   @override
@@ -97,6 +99,7 @@ class Consttext extends StatelessWidget {
     return Text(
       ctext,
       style: TextStyle(
+        color: kcolor,
         fontSize: kfonts,
         fontWeight: kfontw,
       ),
