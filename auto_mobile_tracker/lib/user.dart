@@ -1,3 +1,4 @@
+import 'package:auto_mobile_tracker/components.dart';
 import 'package:auto_mobile_tracker/login.dart';
 import 'package:auto_mobile_tracker/user_home.dart';
 import 'package:auto_mobile_tracker/user_settings.dart';
@@ -41,15 +42,34 @@ class _UserPageState extends State<UserPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("User"),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.menu),
+          color: Colors.black,
+        ),
+        title: Consttext(
+            ctext: "Admin",
+            kfontw: FontWeight.w500,
+            kfonts: 20.0,
+            kcolor: kcolor),
         actions: [
-          IconButton(
-            onPressed: () {
-              logout(context);
-            },
-            icon: const Icon(
-              Icons.logout,
+          CircleAvatar(
+            backgroundImage: AssetImage("assets/images/profile.jpeg"),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const UserSetting(),
+                  ),
+                );
+              },
+              icon: Icon(Icons.person),
+              iconSize: 0,
             ),
+            radius: 25,
           )
         ],
       ),
@@ -59,29 +79,41 @@ class _UserPageState extends State<UserPage> {
           child: widgetOptions.elementAt(selectedIndex),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
+      bottomNavigationBar: Container(
+        height: 60,
+        width: 60,
+        decoration: BoxDecoration(
+          color: Colors.amber,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
+          ),
+        ),
+        child: BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: 'Home',
-                backgroundColor: Colors.green),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Profile',
-              backgroundColor: Colors.blue,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.request_page),
-              label: 'Request',
-              backgroundColor: Colors.yellowAccent,
-            ),
-          ],
-          type: BottomNavigationBarType.shifting,
-          currentIndex: selectedIndex,
-          selectedItemColor: Colors.black,
-          iconSize: 40,
-          onTap: onItemTapped,
-          elevation: 5),
+                backgroundColor: Color(0xffCF6F80),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Profile',
+                backgroundColor: Color(0xffCF6F80),
+              ),
+              // BottomNavigationBarItem(
+              //   icon: Icon(Icons.request_page),
+              //   label: 'Request',
+              //   backgroundColor: Colors.yellowAccent,
+              // ),
+            ],
+            type: BottomNavigationBarType.shifting,
+            currentIndex: selectedIndex,
+            selectedItemColor: Colors.white,
+            iconSize: 20,
+            onTap: onItemTapped,
+            elevation: 0),
+      ),
     );
   }
 }

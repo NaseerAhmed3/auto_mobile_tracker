@@ -125,8 +125,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.blue[900],
-      ),
+          // primaryColor: Colors.blue[900],
+          ),
       // home: const HomePage(),
       home: Splash_Screen(),
     );
