@@ -101,6 +101,7 @@
 //   }
 // }
 
+import 'package:auto_mobile_tracker/components.dart';
 import 'package:auto_mobile_tracker/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -176,26 +177,11 @@ class Splash_Screen extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                Container(
-                  height: 50,
-                  width: 200,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xffCF6F80),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                    ),
-                    child: Text("Gets Started !"),
-                  ),
-                )
+                kbutton(
+                    Rpage: LoginPage(),
+                    BText: "Gets Started !",
+                    CHeight: 50.0,
+                    CWidth: 200.0)
               ],
             ),
           ),
