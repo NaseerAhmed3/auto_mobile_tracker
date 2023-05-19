@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1037300845259",
+    "firebase_url": "https://location-tracking-e506e-default-rtdb.firebaseio.com",
+    "project_id": "location-tracking-e506e",
+    "storage_bucket": "location-tracking-e506e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037300845259:android:4e6109799a73e9d3fd294e",
+        "android_client_info": {
+          "package_name": "com.example.auto_mobile_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037300845259-207u5krv6qk5fpqmd2ndobh15a1asmkd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwhhZnN9W0kqHPtscf5hYzP0pRv2iCeho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037300845259-207u5krv6qk5fpqmd2ndobh15a1asmkd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1037300845259-eoe5v0pu4shf7t5e1vdrigmh420n9tem.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.autoMobileTracker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
