@@ -4,6 +4,7 @@ import 'package:auto_mobile_tracker/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:progress_loader_overlay/progress_loader_overlay.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -19,6 +20,16 @@ class _LoginPageState extends State<LoginPage> {
   final _formkey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  void showDefaultLoader(BuildContext context) async {
+    /// If no widgetBuilder is specified a simple default loader will be displayed.
+    ProgressLoader().widgetBuilder = null;
+
+    await ProgressLoader().show(context);
+    await Future<void>.delayed(Duration(seconds: 2));
+    await ProgressLoader().dismiss();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,6 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                             width: 200,
                             child: ElevatedButton(
                               onPressed: () {
+                                showDefaultLoader(context);
                                 signIn(emailController.text,
                                     passwordController.text);
                               },
@@ -273,3 +285,5 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 }
+
+class SimpleProgressLoaderWidget {}

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_mobile_tracker/components.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,7 @@ class _UserSettingState extends State<UserSetting> {
               child: profilePicLink.isEmpty
                   ? const Icon(
                       Icons.person,
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 202, 139, 135),
                       size: 80,
                     )
                   : ClipRRect(
@@ -131,39 +132,133 @@ class _UserSettingState extends State<UserSetting> {
             ),
           ),
         ),
-        TextFormField(
-          controller: nameController,
-          decoration: const InputDecoration(
-            hintText: 'Name',
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: 50,
+            width: 330,
+            child: TextFormField(
+              controller: nameController,
+              decoration: InputDecoration(
+                hintText: "Full Name",
+                // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
+                filled: true,
+                fillColor: kcolor,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+              ),
+              keyboardType: TextInputType.name,
+            ),
           ),
-          keyboardType: TextInputType.name,
         ),
-        TextFormField(
-          controller: mobileController,
-          decoration: const InputDecoration(
-            hintText: 'Mobile',
+// Mobilenumber feild
+
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: 50,
+            width: 330,
+            child: TextFormField(
+              controller: mobileController,
+              decoration: InputDecoration(
+                hintText: 'Mobile',
+                // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
+                filled: true,
+                fillColor: kcolor,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+              ),
+              keyboardType: TextInputType.number,
+            ),
           ),
-          keyboardType: TextInputType.number,
         ),
-        TextFormField(
-          controller: cnicController,
-          decoration: const InputDecoration(
-            hintText: 'Cnic',
+
+// CNIC feild
+
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: 50,
+            width: 330,
+            child: TextFormField(
+              controller: cnicController,
+              decoration: InputDecoration(
+                hintText: 'Cnic',
+
+                // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
+                filled: true,
+                fillColor: kcolor,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+              ),
+              keyboardType: TextInputType.number,
+            ),
           ),
-          keyboardType: TextInputType.number,
         ),
-        TextFormField(
-          controller: addressController,
-          decoration: const InputDecoration(
-            hintText: 'Address',
+
+//  Address feild
+
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: 50,
+            width: 330,
+            child: TextFormField(
+              controller: addressController,
+              decoration: InputDecoration(
+                hintText: 'Address',
+
+                // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
+                filled: true,
+                fillColor: kcolor,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+              ),
+              keyboardType: TextInputType.streetAddress,
+            ),
           ),
-          keyboardType: TextInputType.streetAddress,
         ),
-        ElevatedButton(
-            onPressed: () {
-              _update();
-            },
-            child: const Text("Update"))
+// UPDATE Button
+        SizedBox(
+          height: 40,
+          width: 200,
+          child: ElevatedButton(
+              onPressed: () {
+                _update();
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: kcolor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+              ),
+              child: const Text("Update")),
+        ),
+        // kbutton(Rpage:   _update(), BText: 'Update', CHeight:40.0, CWidth: 200.0)
       ],
     );
   }

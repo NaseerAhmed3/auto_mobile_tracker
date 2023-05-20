@@ -235,19 +235,34 @@ class _UserHomeState extends State<UserHome> {
                               //     },
                               //     child: const Text("Details")),
                               Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 180,
-                                  bottom: 10,
-                                  top: 10,
-                                ),
-                                child: kbutton(
-                                    Rpage: {
-                                      CarDetailPage(carNo: e["car_no"] ?? "")
-                                    },
-                                    BText: "Details",
-                                    CHeight: 40.0,
-                                    CWidth: 100.0),
-                              )
+                                  padding: const EdgeInsets.only(
+                                    left: 180,
+                                    bottom: 10,
+                                    top: 10,
+                                  ),
+                                  child: Container(
+                                    height: 40,
+                                    width: 100,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => CarDetailPage(
+                                                carNo: e["car_no"] ?? ""),
+                                          ),
+                                        );
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: kcolor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
+                                        ),
+                                      ),
+                                      child: Text("Details"),
+                                    ),
+                                  ))
                             ],
                           ),
                         ),

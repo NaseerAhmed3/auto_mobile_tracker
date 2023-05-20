@@ -123,10 +123,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          // primaryColor: Colors.blue[900],
-          ),
+        primaryColor: kcolor,
+      ),
       // home: const HomePage(),
       home: Splash_Screen(),
     );

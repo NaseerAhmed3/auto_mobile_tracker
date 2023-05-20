@@ -1,5 +1,6 @@
 import 'package:auto_mobile_tracker/components.dart';
 import 'package:auto_mobile_tracker/login.dart';
+import 'package:auto_mobile_tracker/notifcation.dart';
 import 'package:auto_mobile_tracker/user_home.dart';
 import 'package:auto_mobile_tracker/user_settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -55,21 +56,18 @@ class _UserPageState extends State<UserPage> {
             kfonts: 20.0,
             kcolor: kcolor),
         actions: [
-          CircleAvatar(
-            backgroundImage: AssetImage("assets/images/profile.jpeg"),
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const UserSetting(),
-                  ),
-                );
-              },
-              icon: Icon(Icons.person),
-              iconSize: 0,
-            ),
-            radius: 25,
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Notificationss(),
+                ),
+              );
+            },
+            icon: Icon(Icons.notifications),
+            // iconSize: 10,
+            color: Colors.black,
           )
         ],
       ),
@@ -97,7 +95,7 @@ class _UserPageState extends State<UserPage> {
                 backgroundColor: Color(0xffCF6F80),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
+                icon: Icon(Icons.person),
                 label: 'Profile',
                 backgroundColor: Color(0xffCF6F80),
               ),

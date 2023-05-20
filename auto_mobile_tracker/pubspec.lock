@@ -680,6 +680,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  progress_loader_overlay:
+    dependency: "direct main"
+    description:
+      name: progress_loader_overlay
+      sha256: ea3fd01cf3053167578303674b93235e2368b380ef82dc40d6f132c3642f0fb7
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
   quiver:
     dependency: transitive
     description:

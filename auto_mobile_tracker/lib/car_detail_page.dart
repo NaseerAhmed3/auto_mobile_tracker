@@ -1,3 +1,4 @@
+import 'package:auto_mobile_tracker/components.dart';
 import 'package:auto_mobile_tracker/local_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -114,8 +115,13 @@ class _CarDetailPageState extends State<CarDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: kcolor,
+        elevation: 0,
         title: Center(
-          child: Text(widget.carNo),
+          child: Text(
+            widget.carNo,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -124,6 +130,7 @@ class _CarDetailPageState extends State<CarDetailPage> {
           children: [
             SizedBox(
               height: 200,
+              width: 350,
               child: initialPosition != null
                   ? GoogleMap(
                       initialCameraPosition: initialPosition!,
@@ -134,48 +141,136 @@ class _CarDetailPageState extends State<CarDetailPage> {
                     )
                   : const SizedBox(),
             ),
-            Row(
-              children: [
-                const Icon(Icons.speed),
-                Text("$speed KM/H"),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 20, right: 100, left: 100, bottom: 5),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.speed,
+                    size: 50,
+                  ),
+                  Text(
+                    "$speed KM/H",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Row(
-              children: [
-                const Text("Updated on"),
-                Text("$date $time"),
-              ],
+            Container(
+              height: 2,
+              width: 350,
+              color: Colors.grey,
             ),
-            Row(
-              children: [
-                const Text("Engine Status :"),
-                Text(engineStatus ? "ON" : "OFF"),
-              ],
+            SizedBox(
+              height: 100,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Updated on :  ",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Text(
+                        "$date $time",
+                        style: TextStyle(fontSize: 20, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Engine Status :  ",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Text(
+                        engineStatus ? "ON" : "OFF",
+                        style: TextStyle(fontSize: 20, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  _authorizeDialog();
-                },
-                child: const Text("Authorize Start/Shut off")),
-            const SizedBox(height: 24),
+            SizedBox(
+              height: 50,
+              width: 200,
+              child: ElevatedButton(
+                  onPressed: () {
+                    _authorizeDialog();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: kcolor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                  ),
+                  child: const Text("Authorize Start/Shut off")),
+            ),
+            // const SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 10, bottom: 5, left: 10, right: 300),
+              child: Text(
+                "Logs",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
             Visibility(
                 visible: logs.isNotEmpty,
                 child: Column(
                   children: [
                     ...logs
-                        .map((e) => Container(
-                              color: e["status"] ? Colors.green : Colors.red,
-                              child: Row(
-                                children: [
-                                  Text(e["user_name"] ?? ""),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(e["log_time"].toDate().toString())
-                                ],
+                        .map((e) => Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                height: 50,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  color: e["status"]
+                                      ? Color(0xffCBEAE4)
+                                      : Color(0xffFF0000),
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      e["user_name"] ?? "",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    Text(
+                                      e["log_time"].toDate().toString(),
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        // fontWeight: FontWeight.w500,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ))
-                        .toList()
+                        .toList(),
                   ],
                 ))
           ],
