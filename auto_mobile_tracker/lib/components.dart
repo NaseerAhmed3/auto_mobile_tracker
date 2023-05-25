@@ -1,5 +1,19 @@
 import 'package:flutter/material.dart';
 
+final MaterialColor colors = MaterialColor(
+  0xffCF6F80,
+  <int, Color>{
+    50: Color(0xffCF6F80),
+    100: Color(0xffCF6F80),
+    200: Color(0xffCF6F80),
+    300: Color(0xffCF6F80),
+    400: Color(0xffCF6F80),
+    500: Color(0xffCF6F80),
+    600: Color(0xffCF6F80),
+    700: Color(0xffCF6F80),
+    800: Color(0xffCF6F80),
+  },
+);
 final kcolor = Color(0xffCF6F80);
 
 class kbutton extends StatelessWidget {

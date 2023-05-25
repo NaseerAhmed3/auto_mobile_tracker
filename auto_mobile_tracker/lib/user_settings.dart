@@ -104,162 +104,189 @@ class _UserSettingState extends State<UserSetting> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: () {
-            pickUploadProfilePic();
-          },
-          child: Container(
-            margin: const EdgeInsets.only(top: 80, bottom: 24),
-            height: 120,
-            width: 120,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Center(
-              child: profilePicLink.isEmpty
-                  ? const Icon(
-                      Icons.person,
-                      color: Color.fromARGB(255, 202, 139, 135),
-                      size: 80,
-                    )
-                  : ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.network(profilePicLink),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () {
+              pickUploadProfilePic();
+            },
+            child: profilePicLink.isEmpty
+                ? const Icon(
+                    Icons.person,
+                    color: Color.fromARGB(255, 202, 139, 135),
+                    size: 80,
+                  )
+                : Stack(children: [
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(profilePicLink),
+                      radius: 50.0,
                     ),
+                    Positioned(
+                        right: 5,
+                        bottom: 0,
+                        child: Container(
+                            padding: EdgeInsets.all(7.5),
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(width: 2, color: Colors.white),
+                                borderRadius: BorderRadius.circular(90.0),
+                                color: Colors.green)))
+                  ]),
+          ),
+
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Consttext(
+                  ctext: "User Info",
+                  kfontw: FontWeight.w500,
+                  kfonts: 24.0,
+                  kcolor: kcolor),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SizedBox(
-            height: 50,
-            width: 330,
-            child: TextFormField(
-              controller: nameController,
-              decoration: InputDecoration(
-                hintText: "Full Name",
-                // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
-                filled: true,
-                fillColor: kcolor,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30.0),
+          Divider(
+            thickness: 2,
+          ),
+          //  Name feild
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
+              height: 50,
+              width: 330,
+              child: TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  labelText: "Full Name",
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kcolor),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kcolor),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
                 ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
+                keyboardType: TextInputType.name,
               ),
-              keyboardType: TextInputType.name,
             ),
           ),
-        ),
-// Mobilenumber feild
+          // Mobilenumber feild
 
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SizedBox(
-            height: 50,
-            width: 330,
-            child: TextFormField(
-              controller: mobileController,
-              decoration: InputDecoration(
-                hintText: 'Mobile',
-                // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
-                filled: true,
-                fillColor: kcolor,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30.0),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
+              height: 50,
+              width: 330,
+              child: TextFormField(
+                controller: mobileController,
+                decoration: InputDecoration(
+                  labelText: 'Mobile',
+                  // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kcolor),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kcolor),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
                 ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
+                keyboardType: TextInputType.number,
               ),
-              keyboardType: TextInputType.number,
             ),
           ),
-        ),
 
-// CNIC feild
+          // CNIC feild
 
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SizedBox(
-            height: 50,
-            width: 330,
-            child: TextFormField(
-              controller: cnicController,
-              decoration: InputDecoration(
-                hintText: 'Cnic',
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
+              height: 50,
+              width: 330,
+              child: TextFormField(
+                controller: cnicController,
+                decoration: InputDecoration(
+                  labelText: 'Cnic',
 
-                // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
-                filled: true,
-                fillColor: kcolor,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30.0),
+                  // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kcolor),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kcolor),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
                 ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
+                keyboardType: TextInputType.number,
               ),
-              keyboardType: TextInputType.number,
             ),
           ),
-        ),
 
-//  Address feild
+          //  Address feild
 
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SizedBox(
-            height: 50,
-            width: 330,
-            child: TextFormField(
-              controller: addressController,
-              decoration: InputDecoration(
-                hintText: 'Address',
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
+              height: 50,
+              width: 330,
+              child: TextFormField(
+                controller: addressController,
+                decoration: InputDecoration(
+                  labelText: 'Address',
 
-                // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
-                filled: true,
-                fillColor: kcolor,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30.0),
+                  // hintStyle: TextStyle(color:  Color(0x7fCF6F80),),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kcolor),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: kcolor),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
                 ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
+                keyboardType: TextInputType.streetAddress,
               ),
-              keyboardType: TextInputType.streetAddress,
             ),
           ),
-        ),
-// UPDATE Button
-        SizedBox(
-          height: 40,
-          width: 200,
-          child: ElevatedButton(
-              onPressed: () {
-                _update();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: kcolor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0),
+          Divider(
+            thickness: 2,
+          ),
+          // UPDATE Button
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: 40,
+            width: 200,
+            child: ElevatedButton(
+                onPressed: () {
+                  _update();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: kcolor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
                 ),
-              ),
-              child: const Text("Update")),
-        ),
-        // kbutton(Rpage:   _update(), BText: 'Update', CHeight:40.0, CWidth: 200.0)
-      ],
+                child: const Text("Update")),
+          ),
+          // kbutton(Rpage:   _update(), BText: 'Update', CHeight:40.0, CWidth: 200.0)
+        ],
+      ),
     );
   }
 }

@@ -125,7 +125,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: kcolor,
+        scaffoldBackgroundColor: Colors.white,
+        primarySwatch: colors,
       ),
       // home: const HomePage(),
       home: Splash_Screen(),
@@ -146,43 +147,45 @@ class Splash_Screen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(60.0),
           child: SizedBox(
-            height: 600,
+            height: 800,
             width: 700,
             // color: Colors.amber,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 430,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(20),
-                    // color: Colors.amber,
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/map.png'),
-                        fit: BoxFit.fill),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 430,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      // borderRadius: BorderRadius.circular(20),
+                      // color: Colors.amber,
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/map.png'),
+                          fit: BoxFit.fill),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 59, 59, 61),
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
+                  SizedBox(
+                    height: 30,
                   ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                kbutton(
-                    Rpage: LoginPage(),
-                    BText: "Gets Started !",
-                    CHeight: 50.0,
-                    CWidth: 200.0)
-              ],
+                  Text(
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 59, 59, 61),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  kbutton(
+                      Rpage: LoginPage(),
+                      BText: "Gets Started !",
+                      CHeight: 50.0,
+                      CWidth: 200.0)
+                ],
+              ),
             ),
           ),
         ),

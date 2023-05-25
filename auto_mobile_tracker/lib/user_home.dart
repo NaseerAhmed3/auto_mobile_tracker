@@ -133,14 +133,14 @@ class _UserHomeState extends State<UserHome> {
 
           // Add New Cars button
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 20, right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Consttext(
-                  ctext: "Add new Cars",
+                  ctext: "Cars",
                   kfontw: FontWeight.w500,
-                  kfonts: 15.0,
+                  kfonts: 24.0,
                   kcolor: kcolor,
                 ),
                 kbutton(
@@ -151,124 +151,138 @@ class _UserHomeState extends State<UserHome> {
               ],
             ),
           ),
-          Visibility(
-            visible: filteredCars.isNotEmpty,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: filteredCars
-                    .map(
-                      (e) => Padding(
-                        padding: const EdgeInsets.only(
-                            top: 10, bottom: 10, left: 25, right: 25),
-                        child: Card(
-                          // color: Colors.blue[100],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 15,
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    e["name"] ?? "",
-                                    style: TextStyle(
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w500,
-                                        color: kcolor),
-                                  ),
-                                  Text(e["car_no"] ?? ""),
-                                ],
-                              ),
-
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Consttext(
-                                    ctext: "Vin Number",
-                                    kfontw: FontWeight.w500,
-                                    kfonts: 20.0,
-                                    kcolor: kcolor,
-                                  ),
-                                  Text(e["vin_no"] ?? ""),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Consttext(
-                                    ctext: "Make",
-                                    kfontw: FontWeight.w500,
-                                    kfonts: 20.0,
-                                    kcolor: kcolor,
-                                  ),
-                                  Text(e["make"] ?? ""),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Consttext(
-                                    ctext: "Color",
-                                    kfontw: FontWeight.w500,
-                                    kfonts: 20.0,
-                                    kcolor: kcolor,
-                                  ),
-                                  Text(e["color"] ?? ""),
-                                ],
-                              ),
-                              // ElevatedButton(
-                              //     onPressed: () {
-                              //       Navigator.push(
-                              //         context,
-                              //         MaterialPageRoute(
-                              //           builder: (context) => CarDetailPage(
-                              //               carNo: e["car_no"] ?? ""),
-                              //         ),
-                              //       );
-                              //     },
-                              //     child: const Text("Details")),
-                              Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 180,
-                                    bottom: 10,
-                                    top: 10,
-                                  ),
-                                  child: Container(
-                                    height: 40,
-                                    width: 100,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => CarDetailPage(
-                                                carNo: e["car_no"] ?? ""),
+          Divider(
+            thickness: 2,
+          ),
+          Container(
+            height: 475,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Visibility(
+                visible: filteredCars.isNotEmpty,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    children: filteredCars
+                        .map(
+                          (e) => Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, bottom: 10, left: 25, right: 25),
+                            child: Stack(children: [
+                              Card(
+                                // color: Colors.blue[100],
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                elevation: 15,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 20),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            e["name"] ?? "",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w500,
+                                                color: kcolor),
                                           ),
-                                        );
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: kcolor,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(50.0),
-                                        ),
+                                          Text(e["car_no"] ?? ""),
+                                        ],
                                       ),
-                                      child: Text("Details"),
+                                      Divider(
+                                        thickness: 2,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          SizedBox(
+                                            // width: 150,
+                                            height: 100,
+                                            child: Row(
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Consttext(
+                                                      ctext: "Vin  # : ",
+                                                      kfontw: FontWeight.w500,
+                                                      kfonts: 14.0,
+                                                      kcolor: kcolor,
+                                                    ),
+                                                    Consttext(
+                                                      ctext: "Make : ",
+                                                      kfontw: FontWeight.w500,
+                                                      kfonts: 14.0,
+                                                      kcolor: kcolor,
+                                                    ),
+                                                    Consttext(
+                                                      ctext: "Color : ",
+                                                      kfontw: FontWeight.w500,
+                                                      kfonts: 14.0,
+                                                      kcolor: kcolor,
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(e["vin_no"] ?? ""),
+                                                    Text(e["make"] ?? ""),
+                                                    Text(e["color"] ?? ""),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                left: 200,
+                                top: 110,
+                                child: Container(
+                                  height: 40,
+                                  width: 100,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => CarDetailPage(
+                                              carNo: e["car_no"] ?? ""),
+                                        ),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: kcolor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                      ),
                                     ),
-                                  ))
-                            ],
+                                    child: Text("Details"),
+                                  ),
+                                ),
+                              )
+                            ]),
                           ),
-                        ),
-                      ),
-                    )
-                    .toList(),
+                        )
+                        .toList(),
+                  ),
+                ),
               ),
             ),
           ),

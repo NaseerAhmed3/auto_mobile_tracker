@@ -45,37 +45,35 @@ class _UserPageState extends State<UserPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-          color: Colors.black,
-        ),
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: Icon(Icons.menu),
+        //   color: Colors.black,
+        // ),
+        centerTitle: true,
         title: Consttext(
-            ctext: "Admin",
+            ctext: "Auto Tracking System",
             kfontw: FontWeight.w500,
             kfonts: 20.0,
             kcolor: kcolor),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Notificationss(),
-                ),
-              );
-            },
-            icon: Icon(Icons.notifications),
-            // iconSize: 10,
-            color: Colors.black,
-          )
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //           builder: (context) => const Notificationss(),
+        //         ),
+        //       );
+        //     },
+        //     icon: Icon(Icons.notifications),
+        //     // iconSize: 10,
+        //     color: Colors.black,
+        //   )
+        // ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Center(
-          child: widgetOptions.elementAt(selectedIndex),
-        ),
+      body: Center(
+        child: widgetOptions.elementAt(selectedIndex),
       ),
       bottomNavigationBar: Container(
         height: 60,

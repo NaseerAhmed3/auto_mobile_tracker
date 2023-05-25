@@ -141,19 +141,18 @@ class _CarDetailPageState extends State<CarDetailPage> {
                     )
                   : const SizedBox(),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 20, right: 100, left: 100, bottom: 5),
+            SizedBox(
+              width: 300,
               child: Row(
                 children: [
                   const Icon(
                     Icons.speed,
-                    size: 50,
+                    size: 40,
                   ),
                   Text(
                     "$speed KM/H",
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -232,47 +231,52 @@ class _CarDetailPageState extends State<CarDetailPage> {
                 ),
               ),
             ),
-            Visibility(
-                visible: logs.isNotEmpty,
-                child: Column(
-                  children: [
-                    ...logs
-                        .map((e) => Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 50,
-                                width: 300,
-                                decoration: BoxDecoration(
-                                  color: e["status"]
-                                      ? Color(0xffCBEAE4)
-                                      : Color(0xffFF0000),
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      e["user_name"] ?? "",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+            SizedBox(
+              height: 180,
+              child: Visibility(
+                  visible: logs.isNotEmpty,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        ...logs
+                            .map((e) => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    height: 50,
+                                    width: 300,
+                                    decoration: BoxDecoration(
+                                      color: e["status"]
+                                          ? Color(0xffCBEAE4)
+                                          : Color(0xffFF0000),
+                                      borderRadius: BorderRadius.circular(50),
                                     ),
-                                    Text(
-                                      e["log_time"].toDate().toString(),
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        // fontWeight: FontWeight.w500,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ))
-                        .toList(),
-                  ],
-                ))
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          e["user_name"] ?? "",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        Text(
+                                          e["log_time"].toDate().toString(),
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            // fontWeight: FontWeight.w500,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                      ],
+                    ),
+                  )),
+            )
           ],
         ),
       ),
